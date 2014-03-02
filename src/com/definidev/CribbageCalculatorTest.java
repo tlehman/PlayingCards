@@ -61,7 +61,6 @@ public class CribbageCalculatorTest extends Assert {
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		assertEquals(4, calc.score());
-		assertEquals("Flush for 4 : 10C JC 4C 2C", calc.scores()[0]);
 	}
 
 	@Test
@@ -78,6 +77,5 @@ public class CribbageCalculatorTest extends Assert {
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		assertEquals(4, calc.score());
-		assertEquals("Flush for 4 : 10C JC 4C 2C", calc.scores()[0]);
 	}
 }

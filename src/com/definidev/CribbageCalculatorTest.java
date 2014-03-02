@@ -46,4 +46,38 @@ public class CribbageCalculatorTest extends Assert {
 			assertEquals(scoresExpected[i], scores[i]);
 		}
 	}
+	
+	@Test
+	public void testFlush() {
+		// 10C JC 4C 2C 6H -> score of 4 (flush of size 4) 
+		Card cards[] = {
+				new Card(Rank.TEN, Suit.CLUBS),
+				new Card(Rank.JACK, Suit.CLUBS), 
+				new Card(Rank.FOUR, Suit.CLUBS),
+				new Card(Rank.TWO, Suit.CLUBS),
+				new Card(Rank.SIX, Suit.HEARTS)
+		};
+		Deck deck = new Deck(cards);
+		CribbageCalculator calc = new CribbageCalculator(deck);
+
+		assertEquals(4, calc.score());
+		assertEquals("Flush for 4 : 10C JC 4C 2C", calc.scores()[0]);
+	}
+
+	@Test
+	public void testRuns() {
+		// 10H JD QH KC 2S -> score of 4 (run of size 4)
+		Card cards[] = {
+				new Card(Rank.TEN, Suit.HEARTS),
+				new Card(Rank.JACK, Suit.DIAMONDS), 
+				new Card(Rank.QUEEN, Suit.HEARTS),
+				new Card(Rank.KING, Suit.CLUBS),
+				new Card(Rank.TWO, Suit.SPADES)
+		};
+		Deck deck = new Deck(cards);
+		CribbageCalculator calc = new CribbageCalculator(deck);
+
+		assertEquals(4, calc.score());
+		assertEquals("Flush for 4 : 10C JC 4C 2C", calc.scores()[0]);
+	}
 }

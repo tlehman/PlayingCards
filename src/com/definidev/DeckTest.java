@@ -38,4 +38,16 @@ public class DeckTest extends Assert {
 		
 		assertEquals("KD 6H 4S", deck.toString());
 	}
+	
+	/* ===== End sorting methods (depends on tests above) ===== */
+
+	
+	@Test
+	public void testGetAtIndex() {
+		Card cards[] = {new Card(Rank.KING, Suit.DIAMONDS), new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.HEARTS)};
+		Deck deck = new Deck(cards);
+		Card fourOfSpades = new Card(Rank.FIVE, Suit.SPADES);
+		
+		assertEquals(fourOfSpades, deck.getAtIndex(1));
+	}
 }

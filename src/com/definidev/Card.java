@@ -34,6 +34,25 @@ public class Card implements Comparable<Card> {
 		return String.format("%s%s", rank.toString(), suit.toString());
 	}
 
+	@Override
+	public boolean equals(Object other) {
+		if(other instanceof Card) {
+			Card othercard = (Card)other;
+			return this.rank == othercard.rank && this.suit == othercard.suit;
+		}
+		return false;
+	}
+
+	@Override
+	/**
+	 * By default, sort by rank
+	 */
+	public int compareTo(Card card2) {
+ 		Rank rank2 = card2.rank;
+		
+		return this.rank.compareTo(rank2);
+	}
+
 	public static Comparator<Card> CardRankComparator = new Comparator<Card>() {
 		public int compare(Card card1, Card card2) {
 			Rank rank1 = card1.rank;
@@ -52,14 +71,4 @@ public class Card implements Comparable<Card> {
 		}
 	};
 	
-	
-	@Override
-	/**
-	 * By default, sort by rank
-	 */
-	public int compareTo(Card card2) {
- 		Rank rank2 = card2.rank;
-		
-		return this.rank.compareTo(rank2);
-	}
 }

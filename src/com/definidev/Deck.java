@@ -42,4 +42,8 @@ public class Deck {
 	public void sortBySuit() {
 		Arrays.sort(cards, Card.CardSuitComparator);
 	}
+	
+	public Card getAtIndex(int index) {
+		return cards[index];
+	}
 }

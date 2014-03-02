@@ -3,6 +3,7 @@ package com.definidev;
 
 /**
  * Represents a Playing Card, stores a suit and a rank.
+ * 
  * @author tlehman
  */
 public class Card {

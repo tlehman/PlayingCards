@@ -1,5 +1,7 @@
 package com.definidev;
 
+import java.util.Arrays;
+
 /**
  * Deck is a collection of Cards, it allows iteration by:
  *   - rank
@@ -31,5 +33,13 @@ public class Deck {
 		}
 		
 		return deckStrBuf.toString();
+	}
+	
+	public void sortByRank() {
+		Arrays.sort(cards, Card.CardRankComparator);
+	}
+	
+	public void sortBySuit() {
+		Arrays.sort(cards, Card.CardSuitComparator);
 	}
 }

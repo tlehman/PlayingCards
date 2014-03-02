@@ -18,5 +18,24 @@ public class DeckTest extends Assert {
 		Deck deck = new Deck(cards);
 		assertEquals("AC 2C 3H", deck.toString());
 	}
+	
+	/* ===== Test sorting methods (depends on tests above) ===== */
 
+	@Test
+	public void testSortByRank() {
+		Card cards[] = {new Card(Rank.KING, Suit.CLUBS), new Card(Rank.FOUR, Suit.CLUBS), new Card(Rank.SIX, Suit.HEARTS)};
+		Deck deck = new Deck(cards);
+		deck.sortByRank();
+		
+		assertEquals("4C 6H KC", deck.toString());
+	}
+
+	@Test
+	public void testSortBySuit() {
+		Card cards[] = {new Card(Rank.KING, Suit.DIAMONDS), new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.SIX, Suit.HEARTS)};
+		Deck deck = new Deck(cards);
+		deck.sortBySuit();
+		
+		assertEquals("KD 6H 4S", deck.toString());
+	}
 }

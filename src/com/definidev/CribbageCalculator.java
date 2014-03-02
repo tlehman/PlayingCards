@@ -54,7 +54,7 @@ public class CribbageCalculator {
 	
 			// Populate subset with cards
 			for(int i = 0; i < 32; i++) {
-	            if(ithBitIsOne(subsetNum, i)) {
+	            if(ithBitIsOne(subsetNum, i) && subsetIndex < ones) {
 	                subset[subsetIndex] = deck.getAtIndex(i);
 	                subsetIndex += 1;
 	            }
@@ -82,6 +82,9 @@ public class CribbageCalculator {
 	
 	/**
 	 * Count number of bits in integer that are set to 1
+	 * 
+	 * Note: This technique is described here: http://tobilehman.com/blog/2014/02/08/counting-bits-in-integers/
+	 * 
 	 * @param bits
 	 * @return
 	 */
@@ -98,11 +101,13 @@ public class CribbageCalculator {
 	 * Check if the i-th bit of N is set to 1
 	 */
 	private boolean ithBitIsOne(int n, int i) {
-		return false;
+		int two_to_i = (int)Math.pow(2, i);
+		return (two_to_i & n) != 0;
 	}
 	
 	/**
 	 * Check the value of the rank (for Cribbage)
+	 * TODO: Make Scorable interface that different objects can implement
 	 */
 	private int rankValue(Rank rank) {
 		if(rank.rankIndex() > 10) return 10;

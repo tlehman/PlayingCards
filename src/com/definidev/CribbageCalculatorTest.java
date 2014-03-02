@@ -35,12 +35,13 @@ public class CribbageCalculatorTest extends Assert {
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		String scoresExpected[] = {
+				"Pair for 2 : 2D 2S",
 				"Fifteen for 2 : 5C 10S", 
-				"Fifteen for 2 : 10S 2S 2D AS",
-				"Pair for 2 : 2S 2D"
+				"Fifteen for 2 : 10S 2S 2D AS"
 		};
 
 		String scores[] = calc.scores();
+
 		for(int i = 0; i < scoresExpected.length; i++) {
 			assertEquals(scoresExpected[i], scores[i]);
 		}

@@ -23,12 +23,10 @@ The types I've defined are:
  - can render itself to a `String`
  - can 'pretty' render itself to a `String` with fancy UTF-8 characters such as ♣
 
-### CribbageService
- - takes in a deck and outputs an array 
- 
-### CribbageScore
- - has an `int` score
- - has a `String` description
+### CribbageCalculator
+ - takes in a deck and calculates a score
+ - returns the score
+ - returns the collection of score descriptions
  
  
 ## To Do

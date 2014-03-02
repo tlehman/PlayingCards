@@ -107,7 +107,7 @@ public class CribbageCalculator {
 	
 	/**
 	 * Check the value of the rank (for Cribbage)
-	 * TODO: Make Scorable interface that different objects can implement
+	 * TODO: Make Scoreable interface that different objects can implement
 	 */
 	private int rankValue(Rank rank) {
 		if(rank.rankIndex() > 10) return 10;

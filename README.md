@@ -33,6 +33,7 @@ The types I've defined are:
  
 ## To Do
   - Incorporate SVG Images from [vectorized-playing-cards](https://code.google.com/p/vectorized-playing-cards/)
+  - Use [j2objc](https://code.google.com/p/j2objc/) to compile this to Objective-C and use in an iOS app
   
  ![all 52 cards](http://sourceforge.net/p/vector-cards/screenshot/color_deck.png)
  

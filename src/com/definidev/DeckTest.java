@@ -1,5 +1,7 @@
 package com.definidev;
 
+import java.util.HashMap;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -80,5 +82,24 @@ public class DeckTest extends Assert {
 		Card fourOfSpades = new Card(Rank.FIVE, Suit.SPADES);
 		
 		assertEquals(fourOfSpades, deck.getAtIndex(1));
+	}
+	
+	@Test
+	public void testDeckIterable() {
+		HashMap<Rank, Deck> rankMap = new HashMap<Rank, Deck>();
+		Card cards[] = {
+				new Card(Rank.KING, Suit.SPADES), 
+				new Card(Rank.SIX, Suit.SPADES), 
+				new Card(Rank.SIX, Suit.HEARTS)
+		};
+		Deck deck = new Deck(cards);
+
+		for(Rank rank : Rank.values()) {
+			rankMap.put(rank, new Deck());
+		}
+		for(Card card : deck) {
+			rankMap.get(card.rank).addCard(card);
+		}
+		assertEquals(2, rankMap.get(Rank.SIX).count());
 	}
 }

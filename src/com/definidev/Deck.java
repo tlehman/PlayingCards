@@ -2,6 +2,7 @@ package com.definidev;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 /**
  * Deck is a collection of Cards, it allows iteration by:
@@ -12,7 +13,7 @@ import java.util.Collections;
  * @author tlehman
  *
  */
-public class Deck {
+public class Deck implements Iterable<Card> {
 	private ArrayList<Card> cards;
 
 	public Deck() {
@@ -58,5 +59,10 @@ public class Deck {
 
 	public void addCard(Card card) {
 		cards.add(card);
+	}
+
+	@Override
+	public Iterator<Card> iterator() {
+		return cards.iterator();
 	}
 }

@@ -76,7 +76,9 @@ public class CribbageCalculator {
 
 		// Count Maximal Runs
 		HashMap <Rank, Deck> runMap = new HashMap<Rank, Deck>();
-		
+		for(Rank rank : Rank.values()) {
+			runMap.put(rank, new Deck());
+		}
 
 		// Count Maximal Flushes
 		deck.sortBySuit();

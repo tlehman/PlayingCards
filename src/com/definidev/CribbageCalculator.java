@@ -1,6 +1,7 @@
 package com.definidev;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CribbageCalculator {
 	private Deck deck;
@@ -74,7 +75,8 @@ public class CribbageCalculator {
 		}
 
 		// Count Maximal Runs
-		deck.sortByRank();
+		HashMap <Rank, Deck> runMap = new HashMap<Rank, Deck>();
+		
 
 		// Count Maximal Flushes
 		deck.sortBySuit();

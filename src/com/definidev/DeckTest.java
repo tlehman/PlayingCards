@@ -17,6 +17,17 @@ public class DeckTest extends Assert {
 	}
 	
 	@Test
+	public void testInitAndAddCard() {
+		Deck deck = new Deck();
+		deck.addCard(new Card(Rank.THREE, Suit.HEARTS));
+		deck.addCard(new Card(Rank.SIX, Suit.HEARTS));
+		deck.addCard(new Card(Rank.JACK, Suit.HEARTS));
+		deck.addCard(new Card(Rank.EIGHT, Suit.SPADES));
+
+		assertEquals(4, deck.count());
+	}
+	
+	@Test
 	public void testToString() {
 		Card cards[] = {
 				new Card(Rank.ACE, Suit.CLUBS), 

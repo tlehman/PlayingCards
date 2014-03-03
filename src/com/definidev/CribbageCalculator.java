@@ -79,6 +79,11 @@ public class CribbageCalculator {
 		for(Rank rank : Rank.values()) {
 			runMap.put(rank, new Deck());
 		}
+		// Collect all cards with same rank into Decks
+		for(Card card : deck) {
+			runMap.get(card.rank).addCard(card);
+		}
+		// Find interval of ranks that are maximal runs
 
 		// Count Maximal Flushes
 		deck.sortBySuit();

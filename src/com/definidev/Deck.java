@@ -15,6 +15,7 @@ import java.util.Iterator;
  */
 public class Deck implements Iterable<Card> {
 	private ArrayList<Card> cards;
+	private int currentCardIndex = 0;
 
 	public Deck() {
 		this.cards = new ArrayList<Card>();
@@ -64,5 +65,11 @@ public class Deck implements Iterable<Card> {
 	@Override
 	public Iterator<Card> iterator() {
 		return cards.iterator();
+	}
+
+	public Card nextCardCircular() {
+		Card card = cards.get(currentCardIndex);
+		currentCardIndex = (currentCardIndex + 1) % count();
+		return card;
 	}
 }

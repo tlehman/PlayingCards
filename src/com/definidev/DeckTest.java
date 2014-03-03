@@ -102,4 +102,21 @@ public class DeckTest extends Assert {
 		}
 		assertEquals(2, rankMap.get(Rank.SIX).count());
 	}
+	
+	@Test
+	public void testDeckCirclularIterator() {
+		Card cards[] = {
+				new Card(Rank.KING, Suit.SPADES), 
+				new Card(Rank.SIX, Suit.SPADES), 
+				new Card(Rank.SIX, Suit.HEARTS)
+		};
+		Deck deck = new Deck(cards);
+		
+		deck.nextCardCircular();
+		deck.nextCardCircular();
+		deck.nextCardCircular();
+		deck.nextCardCircular();
+		
+		assertEquals(cards[1], deck.nextCardCircular());
+	}
 }

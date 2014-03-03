@@ -76,50 +76,6 @@ public class CribbageCalculator {
 
 		// A Run is a sequence of 3 or more cards with contiguous ranks.
 	    //
-	    //    To find runs, we keep track of these data:
-	    //      run_length    int
-	    //      multiplicity  int
-	    //      index         int
-	    //      rank_map      HashMap<Rank, Deck>
-	    //
-	    //    Before we introduce the algorithm, it is helpful to see an 
-	    //    example, suppose our hand is:
-	    //        9H  8H  6C  7S  8D  8C
-	    //    we start by computing rank_map: 
-	    //        A 2 3 4 5 6 7 8 9 10 J K Q
-	    //        0 0 0 0 0 1 1 3 1  0 0 0 0
-	    //                  ^ scan until the first nonzero value is found, 
-	    //                    then scan until you hit the next zero value:
-	    //        A 2 3 4 5 6 7 8 9 10 J K Q
-	    //        0 0 0 0 0 1 1 3 1  0 0 0 0
-	    //                           ^ at this point you should have run_length = 4
-	    //                             and 4 >= 3, so it counts as a run.
-	    //                             Notice that you have three runs:
-	    //                                  6C  7  8D  9H  
-	    //                                   "  "  8H   "
-	    //                                   "  "  8C   "
-	    //                             This is why multiplicity is multiplied 
-	    //                             with run_length to compute the score.
-	    //
-	    //    The algorithm goes like this:
-	    //      Initialize index        = 0
-	    //                 multiplicity = 1
-	    //                 run_length   = 0
-	    //      Scan from left to right (increasing index)
-	    //
-	    //      Loop index 0 to 13
-	    //          if rank_map[index] > 0
-	    //              run_length += 1
-	    //              multiplicity *= rank_map[index]
-	    //          else
-	    //              if run_length >= 3
-	    //                  display (run_length, multiplicity * run_length)
-	    //              endif
-	    //              run_length = 0
-	    //              multiplicity = 1
-	    //          endif
-	    //      End Loop
-	    //
 		// Count Maximal Runs
 		HashMap <Rank, Deck> rankMap = new HashMap<Rank, Deck>();
 		for(Rank rank : Rank.values()) {
@@ -129,9 +85,12 @@ public class CribbageCalculator {
 		for(Card card : deck) {
 			rankMap.get(card.rank).addCard(card);
 		}
-
+		int runLength = 0;
+		int multiplicity = 1;
 		for(Rank rank : Rank.values()) {
-			
+			if(rankMap.get(rank).count() > 0) {
+				
+			}
 		}
 
 		// Count Maximal Flushes

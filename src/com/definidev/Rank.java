@@ -32,6 +32,38 @@ public enum Rank {
 		return rankStr;
 	}
 	
+	public static Rank fromString(String rankStr) {
+		Rank rank;
+		if (rankStr.equalsIgnoreCase("A")) {
+			rank = ACE;
+		} else if (rankStr.equalsIgnoreCase("2")) {
+			rank = TWO;
+		} else if (rankStr.equalsIgnoreCase("3")) {
+			rank = THREE;
+		} else if (rankStr.equalsIgnoreCase("4")) {
+			rank = FOUR;
+		} else if (rankStr.equalsIgnoreCase("5")) {
+			rank = FIVE;
+		} else if (rankStr.equalsIgnoreCase("6")) {
+			rank = SIX;
+		} else if (rankStr.equalsIgnoreCase("7")) {
+			rank = SEVEN;
+		} else if (rankStr.equalsIgnoreCase("8")) {
+			rank = EIGHT;
+		} else if (rankStr.equalsIgnoreCase("9")) {
+			rank = NINE;
+		} else if (rankStr.equalsIgnoreCase("10")) {
+			rank = TEN;
+		} else if (rankStr.equalsIgnoreCase("J")) {
+			rank = JACK;
+		} else if (rankStr.equalsIgnoreCase("Q")) {
+			rank = QUEEN;
+		} else {
+			rank = KING;
+		}
+		return rank;
+	}
+	
 	public int rankIndex() {
 		return rankIndex;
 	}

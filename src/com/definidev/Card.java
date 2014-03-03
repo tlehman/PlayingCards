@@ -29,6 +29,10 @@ public class Card implements Comparable<Card> {
 		rank = Rank.ACE;
 		suit = Suit.CLUBS;
 	}
+	
+	public static Card fromStrings(String rank, String suit) {
+		return new Card(Rank.fromString(rank), Suit.fromString(suit));
+	}
 
 	public String toString() {
 		return String.format("%s%s", rank.toString(), suit.toString());

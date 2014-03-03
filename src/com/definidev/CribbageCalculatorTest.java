@@ -48,6 +48,11 @@ public class CribbageCalculatorTest extends Assert {
 	}
 	
 	@Test
+	public void testRankIntervals() {
+		
+	}
+	
+	@Test
 	public void testFlush() {
 		// 10C JC 4C 2C 6H -> score of 4 (flush of size 4) 
 		Card cards[] = {

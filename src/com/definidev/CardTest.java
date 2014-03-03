@@ -15,6 +15,14 @@ public class CardTest extends Assert {
 		assertEquals("AC", c.toString());
 	}
 	
+	@Test
+	public void testFromStrings() {
+		Card ah1 = Card.fromStrings("A", "H");
+		Card ah2 = new Card(Rank.ACE, Suit.HEARTS);
+		
+		assertEquals(ah1, ah2);
+	}
+	
 	// Random methods
 	@Test
 	public void testInitWithNoArgs() {

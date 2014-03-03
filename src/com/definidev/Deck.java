@@ -3,6 +3,8 @@ package com.definidev;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Deck is a collection of Cards, it allows iteration by:
@@ -17,8 +19,28 @@ public class Deck implements Iterable<Card> {
 	private ArrayList<Card> cards;
 	private int currentCardIndex = 0;
 
+	/**
+	 * Default constructor initializes an empty deck
+	 */
 	public Deck() {
 		this.cards = new ArrayList<Card>();
+	}
+	
+	/**
+	 * Parses a string and instantiates a deck with the corresponding cards. 
+	 * 
+	 * @param deckStr  a string of cards such as "2C 3H JD"
+	 */
+	public Deck(String deckStr) {
+		this.cards = new ArrayList<Card>();
+		Matcher m = Pattern.compile("([2-9]|10|[AJKQ])([CDHS]) ?").matcher(deckStr);
+		
+		String rankStr, suitStr;
+		while(m.find()) {
+			rankStr = m.group(1);
+			suitStr = m.group(2);
+			cards.add(Card.fromStrings(rankStr, suitStr));
+		}
 	}
 	
 	public Deck(Card cards[]) {

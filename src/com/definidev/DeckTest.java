@@ -19,6 +19,21 @@ public class DeckTest extends Assert {
 	}
 	
 	@Test
+	public void testInitFromString() {
+		Deck deck = new Deck("AS QH 10C 5D");
+		Card cards[] = {
+				new Card(Rank.ACE, Suit.SPADES),
+				new Card(Rank.QUEEN, Suit.HEARTS),
+				new Card(Rank.TEN, Suit.CLUBS),
+				new Card(Rank.FIVE, Suit.DIAMONDS)
+		};
+		
+		for(int i = 0; i < cards.length; i++) {
+			assertEquals(cards[i], deck.getAtIndex(i));
+		}
+	}
+	
+	@Test
 	public void testInitAndAddCard() {
 		Deck deck = new Deck();
 		deck.addCard(new Card(Rank.THREE, Suit.HEARTS));

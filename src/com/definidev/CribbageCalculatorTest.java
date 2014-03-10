@@ -46,12 +46,7 @@ public class CribbageCalculatorTest extends Assert {
 			assertEquals(scoresExpected[i], scores[i]);
 		}
 	}
-	
-	@Test
-	public void testRankIntervals() {
-		assertTrue(false);
-	}
-	
+
 	@Test
 	public void testFlush() {
 		// 10C JC 4C 2C 6H -> score of 4 (flush of size 4) 

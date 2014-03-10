@@ -32,6 +32,11 @@ public enum Rank {
 		return rankStr;
 	}
 	
+	/**
+	 * TODO: Use Guava's ImmutableMap
+	 * @param rankStr Rank as string, one of {"A","2",...,"Q","K"}
+	 * @return
+	 */
 	public static Rank fromString(String rankStr) {
 		Rank rank;
 		if (rankStr.equalsIgnoreCase("A")) {

@@ -6,7 +6,7 @@ import org.junit.Test;
 public class CribbageCalculatorTest extends Assert {
 
 	@Test
-	public void testScore() {
+	public void testScorePairAndFifteens() {
 		// {5C, 10S, 2S, 2D, AS} -> score of 6 (two fifteens, one pair)
 		Card cards[] = {
 				new Card(Rank.FIVE, Suit.CLUBS), 
@@ -23,7 +23,7 @@ public class CribbageCalculatorTest extends Assert {
 
 	@Test
 	public void testScoreDescriptions() {
-		// {5C, 10S, 2S, 2D, AS} -> score of 6 (two fifteens, one pair)
+		// {5C, 10S, 2S, 2D, AS} -> score of 6 (one pair, two fifteens)
 		Card cards[] = {
 				new Card(Rank.FIVE, Suit.CLUBS), 
 				new Card(Rank.TEN, Suit.SPADES),
@@ -49,7 +49,7 @@ public class CribbageCalculatorTest extends Assert {
 	
 	@Test
 	public void testRankIntervals() {
-		
+		assertTrue(false);
 	}
 	
 	@Test

@@ -7,6 +7,7 @@ public class CribbageCalculator {
 	private Deck deck;
 	private int score;
 	private ArrayList<String> scores;
+	public final int FLUSH_MIN = 4;
 
 	public CribbageCalculator(Deck deck) {
 		this.deck = deck;
@@ -24,7 +25,7 @@ public class CribbageCalculator {
 	}
 
 	/**
-	 * calculate() applies the rules of Cribbage to determine the score, 
+	 * calculate() applies the rules of Cribbage to determine the score,
 	 * store that integer value, and keep descriptions of each hand in 
 	 * scores
 	 * 
@@ -77,24 +78,45 @@ public class CribbageCalculator {
 		// A Run is a sequence of 3 or more cards with contiguous ranks.
 	    //
 		// Count Maximal Runs
-		HashMap <Rank, Deck> rankMap = new HashMap<Rank, Deck>();
-		for(Rank rank : Rank.values()) {
-			rankMap.put(rank, new Deck());
-		}
-		// Collect all cards with same rank into Decks
-		for(Card card : deck) {
-			rankMap.get(card.rank).addCard(card);
-		}
-		int runLength = 0;
-		int multiplicity = 1;
-		for(Rank rank : Rank.values()) {
-			if(rankMap.get(rank).count() > 0) {
-				
-			}
-		}
 
 		// Count Maximal Flushes
 		deck.sortBySuit();
+		Deck clubDeck = new Deck();
+		Deck diamondDeck = new Deck();
+		Deck heartDeck = new Deck();
+		Deck spadeDeck = new Deck();
+		Deck currentDeck = null;
+		ArrayList<Deck> flushDecks = new ArrayList<Deck>();
+
+		for(Card card : deck) {
+			switch(card.suit) {
+			case CLUBS:
+				clubDeck.addCard(card);
+				currentDeck = clubDeck;
+				break;
+			case DIAMONDS:
+				diamondDeck.addCard(card);
+				currentDeck = diamondDeck;
+				break;
+			case HEARTS:
+				heartDeck.addCard(card);
+				currentDeck = heartDeck;
+				break;
+			case SPADES:
+				spadeDeck.addCard(card);
+				currentDeck = spadeDeck;
+				break;
+			default:
+				break;
+			}
+			if(currentDeck != null && currentDeck.count() >= FLUSH_MIN) {
+				flushDecks.add(currentDeck);
+			}
+		}
+		for(Deck deck : flushDecks) {
+			scores.add(String.format("Flush for %d : %s", deck.count(), deck.toString()));
+			score += deck.count();
+		}
 	}
 	
 	/**

@@ -8,6 +8,7 @@ public class CribbageCalculator {
 	private int score;
 	private ArrayList<String> scores;
 	public final int FLUSH_MIN = 4;
+	public final int RUN_MIN = 3;
 
 	public CribbageCalculator(Deck deck) {
 		this.deck = deck;
@@ -76,10 +77,39 @@ public class CribbageCalculator {
 		}
 
 		// A Run is a sequence of 3 or more cards with contiguous ranks.
-	    //
-		// Count Maximal Runs
+		//   Count Maximal Runs
+		//
+		deck.sortByRank();
+		HashMap<Rank, Deck> rankMap = new HashMap<Rank, Deck>();
+		for(Rank rank : Rank.values()) {
+			rankMap.put(rank, new Deck());
+		}
+		for(Card card : deck) {
+			rankMap.get(card.rank).addCard(card);
+		}
+		Rank ranks[] = Rank.values();
+		int runLength = 0;
+		int multiplicity = 1;
 
-		// Count Maximal Flushes
+		for(int i = 1; i < ranks.length; i++) {
+			if(rankMap.get(ranks[i]).count() > 0) {
+				runLength += 1;
+				multiplicity *= rankMap.get(ranks[i]).count();
+			} else {
+				if(rankMap.get(ranks[i-1]).count() > 0) {
+					if(runLength >= RUN_MIN) {
+						// add score for runs
+						for(int j = 0; j < multiplicity; j++) {
+							
+						}
+					}
+				}
+			}
+			
+		}
+
+		// A Flush is a sequence of 4 or more cards of the same suit.  
+		//   Count Maximal Flushes
 		deck.sortBySuit();
 		Deck clubDeck = new Deck();
 		Deck diamondDeck = new Deck();

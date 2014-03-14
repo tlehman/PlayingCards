@@ -79,6 +79,16 @@ public class CribbageCalculator {
 		// A Run is a sequence of 3 or more cards with contiguous ranks.
 		//   Count Maximal Runs
 		//
+		//   This algorithm gathers all cards of the same rank into 
+		//   a deck like so:
+		//
+		//      A 2 3 4 5 6 7 8 9 10 J Q K
+		//        = = = = 
+		//          =   =
+		//              =
+		// 
+		//   The above map would have multiplicity=6, runLength=4
+		//
 		deck.sortByRank();
 		HashMap<Rank, Deck> rankMap = new HashMap<Rank, Deck>();
 		for(Rank rank : Rank.values()) {
@@ -90,22 +100,25 @@ public class CribbageCalculator {
 		Rank ranks[] = Rank.values();
 		int runLength = 0;
 		int multiplicity = 1;
+		Card currentCard = null;
 
-		for(int i = 1; i < ranks.length; i++) {
-			if(rankMap.get(ranks[i]).count() > 0) {
-				runLength += 1;
-				multiplicity *= rankMap.get(ranks[i]).count();
-			} else {
-				if(rankMap.get(ranks[i-1]).count() > 0) {
-					if(runLength >= RUN_MIN) {
-						// add score for runs
-						for(int j = 0; j < multiplicity; j++) {
-							
+		// determine multiplicity for final enumeration loop
+		for(int i = 0; i < ranks.length; i++) {
+			if(rankMap.get(ranks[i]).count() == 0 || i == ranks.length-1) {
+				if(runLength >= RUN_MIN) {
+					for(int j = 0; j < multiplicity; j++) {
+						for(int k = i-runLength; k < i; k++) {
+							currentCard = rankMap.get(ranks[k]).nextCardCircular();
+							System.out.printf("%s ", currentCard.toString());
 						}
 					}
 				}
+				runLength = 0;
+				multiplicity = 1;
+			} else {
+				runLength += 1;
+				multiplicity *= rankMap.get(ranks[i]).count();
 			}
-			
 		}
 
 		// A Flush is a sequence of 4 or more cards of the same suit.  

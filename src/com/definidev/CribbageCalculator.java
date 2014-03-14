@@ -101,17 +101,18 @@ public class CribbageCalculator {
 		int runLength = 0;
 		int multiplicity = 1;
 		Card currentCard = null;
+		Deck rankDeck = null;
 		Deck runDeck = null;
 
 		// determine multiplicity for final enumeration loop
-		for(int i = 0; i < ranks.length; i++) {
-			if(rankMap.get(ranks[i]).count() == 0 || i == ranks.length-1) {
-				// handle right boundary
-				if(i == ranks.length-1 && rankMap.get(ranks[i]).count() > 0) {
-					runLength += 1;
-					multiplicity *= rankMap.get(ranks[i]).count();
-				}
-				
+		for(int i = 0; i <= ranks.length; i++) {
+			if(ranks.length == i) {
+				rankDeck = null;
+			} else {
+				rankDeck = rankMap.get(ranks[i]);
+			}
+
+			if(rankDeck == null || rankDeck.count() == 0) {
 				if(runLength >= RUN_MIN) {
 					for(int j = 0; j < multiplicity; j++) {
 						runDeck = new Deck();
@@ -131,7 +132,7 @@ public class CribbageCalculator {
 				multiplicity = 1;
 			} else {
 				runLength += 1;
-				multiplicity *= rankMap.get(ranks[i]).count();
+				multiplicity *= rankDeck.count();
 			}
 		}
 

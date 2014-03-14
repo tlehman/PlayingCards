@@ -124,7 +124,7 @@ public class CribbageCalculator {
 						}
 
 						score += runLength;
-						//scores.add(String.format("Run of %d for %d : %s", runLength, runLength, runDeck.toString()));
+						scores.add(String.format("Run of %d for %d : %s", runLength, runLength, runDeck.toString()));
 						System.out.printf("\n");
 					}
 				}

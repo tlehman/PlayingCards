@@ -90,6 +90,8 @@ public class Deck implements Iterable<Card> {
 	}
 
 	public Card nextCardCircular() {
+		if(cards.size() == 0) return null;
+		
 		Card card = cards.get(currentCardIndex);
 		currentCardIndex = (currentCardIndex + 1) % count();
 		return card;

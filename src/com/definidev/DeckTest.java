@@ -134,4 +134,25 @@ public class DeckTest extends Assert {
 		
 		assertEquals(cards[1], deck.nextCardCircular());
 	}
+	
+	@Test
+	public void testDeckCircularDegenerate() {
+		Deck deck = new Deck();
+		boolean threwException = false;
+		try {
+			deck.nextCardCircular();
+		} catch (IndexOutOfBoundsException e) {
+			threwException = true;
+		}
+		
+		assertTrue(!threwException);
+	}
+	
+	@Test
+	public void testDeckCircularSingleton() {
+		Card cards[] = {new Card(Rank.KING, Suit.SPADES)};
+		Deck deck = new Deck(cards);
+		deck.nextCardCircular();
+		assertEquals(cards[0], deck.nextCardCircular());
+	}
 }

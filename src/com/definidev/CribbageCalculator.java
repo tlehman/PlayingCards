@@ -120,12 +120,10 @@ public class CribbageCalculator {
 						for(int k = i-runLength; k < i; k++) {
 							currentCard = rankMap.get(ranks[k]).nextCardCircular();
 							runDeck.addCard(currentCard);
-							System.out.printf("%s ", currentCard);
 						}
 
 						score += runLength;
 						scores.add(String.format("Run of %d for %d : %s", runLength, runLength, runDeck.toString()));
-						System.out.printf("\n");
 					}
 				}
 				runLength = 0;

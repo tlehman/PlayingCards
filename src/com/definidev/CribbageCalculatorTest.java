@@ -78,4 +78,11 @@ public class CribbageCalculatorTest extends Assert {
 
 		assertEquals(4, calc.score());
 	}
+	
+	@Test
+	public void testMultipleRuns() {
+		Deck deck = new Deck("AH AS AD 2S 3H"); // trible run of 3 and a triple (15 points)
+		CribbageCalculator calc = new CribbageCalculator(deck);
+		assertEquals(15, calc.score());
+	}
 }

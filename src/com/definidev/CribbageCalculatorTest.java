@@ -7,15 +7,7 @@ public class CribbageCalculatorTest extends Assert {
 
 	@Test
 	public void testScorePairAndFifteens() {
-		// {5C, 10S, 2S, 2D, AS} -> score of 6 (two fifteens, one pair)
-		Card cards[] = {
-				new Card(Rank.FIVE, Suit.CLUBS), 
-				new Card(Rank.TEN, Suit.SPADES),
-				new Card(Rank.TWO, Suit.SPADES),
-				new Card(Rank.TWO, Suit.DIAMONDS),
-				new Card(Rank.ACE, Suit.SPADES)
-		};
-		Deck deck = new Deck(cards);
+		Deck deck = new Deck("5C 10S 2S 2D AS"); // score of 6 (two fifteens, one pair)
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		assertEquals(6, calc.score());
@@ -23,15 +15,7 @@ public class CribbageCalculatorTest extends Assert {
 
 	@Test
 	public void testScoreDescriptions() {
-		// {5C, 10S, 2S, 2D, AS} -> score of 6 (one pair, two fifteens)
-		Card cards[] = {
-				new Card(Rank.FIVE, Suit.CLUBS), 
-				new Card(Rank.TEN, Suit.SPADES),
-				new Card(Rank.TWO, Suit.SPADES),
-				new Card(Rank.TWO, Suit.DIAMONDS),
-				new Card(Rank.ACE, Suit.SPADES)
-		};
-		Deck deck = new Deck(cards);
+		Deck deck = new Deck("5C 10S 2S 2D AS");  // (one pair, two fifteens)
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		String scoresExpected[] = {
@@ -49,15 +33,7 @@ public class CribbageCalculatorTest extends Assert {
 
 	@Test
 	public void testFlush() {
-		// 10C JC 4C 2C 6H -> score of 4 (flush of size 4) 
-		Card cards[] = {
-				new Card(Rank.TEN, Suit.CLUBS),
-				new Card(Rank.JACK, Suit.CLUBS), 
-				new Card(Rank.FOUR, Suit.CLUBS),
-				new Card(Rank.TWO, Suit.CLUBS),
-				new Card(Rank.SIX, Suit.HEARTS)
-		};
-		Deck deck = new Deck(cards);
+		Deck deck = new Deck("10C JC 4C 2C 6H"); // score of 4 (flush of size 4)
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		assertEquals(4, calc.score());
@@ -65,15 +41,7 @@ public class CribbageCalculatorTest extends Assert {
 
 	@Test
 	public void testRuns() {
-		// 10H JD QH KC 2S -> score of 4 (run of size 4)
-		Card cards[] = {
-				new Card(Rank.TEN, Suit.HEARTS),
-				new Card(Rank.JACK, Suit.DIAMONDS), 
-				new Card(Rank.QUEEN, Suit.HEARTS),
-				new Card(Rank.KING, Suit.CLUBS),
-				new Card(Rank.TWO, Suit.SPADES)
-		};
-		Deck deck = new Deck(cards);
+		Deck deck = new Deck("10H JD QH KC 2S"); //  score of 4 (run of size 4)
 		CribbageCalculator calc = new CribbageCalculator(deck);
 
 		assertEquals(4, calc.score());
